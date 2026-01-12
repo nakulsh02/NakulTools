@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NakulTools</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+
+<style>
+:root{
+    --neon: #00f2ff;
+    --violet: #7a5cff;
+    --dark: #050812;
+    --card: #0f1533;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top, #0a0f1f, var(--dark));
+    color:#e8f1ff;
+    min-height:100vh;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:26px 16px;
+    background: linear-gradient(90deg, var(--neon), var(--violet));
+    color:#050812;
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:1px;
+    box-shadow:0 0 30px rgba(0,242,255,.6);
+}
+
+/* SUBTEXT */
+.sub{
+    text-align:center;
+    margin-top:10px;
+    font-size:14px;
+    color:#b6c8ff;
+}
+
+/* GRID */
+.container{
+    max-width:1000px;
+    margin:40px auto;
+    padding:0 14px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+}
+
+/* CARD */
+.tool-card{
+    background: linear-gradient(160deg, var(--card), #0b1026);
+    border-radius:16px;
+    padding:24px;
+    text-align:center;
+    border:1px solid rgba(0,242,255,.25);
+    box-shadow:
+        0 0 18px rgba(0,242,255,.15),
+        inset 0 0 14px rgba(122,92,255,.15);
+    transition:.4s ease;
+}
+
+.tool-card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:
+        0 0 40px rgba(0,242,255,.7),
+        inset 0 0 22px rgba(122,92,255,.4);
+}
+
+/* ICON */
+.icon{
+    font-size:38px;
+    margin-bottom:10px;
+    color:var(--neon);
+}
+
+/* TEXT */
+.tool-card h2{
+    font-size:18px;
+    margin-bottom:6px;
+    color:var(--neon);
+}
+
+.tool-card p{
+    font-size:14px;
+    color:#b6c8ff;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:16px;
+    padding:11px 26px;
+    border-radius:30px;
+    background:transparent;
+    color:var(--neon);
+    border:2px solid var(--neon);
+    font-weight:600;
+    cursor:pointer;
+    letter-spacing:.5px;
+    position:relative;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,var(--neon),var(--violet));
+    opacity:0;
+    transition:.35s;
+    z-index:-1;
+}
+
+.btn:hover::before{opacity:1;}
+.btn:hover{
+    color:#050812;
+    box-shadow:0 0 22px rgba(0,242,255,.9);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:13px;
+    color:#9bb1ff;
+    opacity:.8;
+}
+
+@media(max-width:600px){
+    header{font-size:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>NakulTools</header>
+<div class="sub">All smart tools at one place</div>
+
+<div class="container">
+
+    <div class="tool-card">
+        <div class="icon">🖼️</div>
+        <h2>Image Converter</h2>
+        <p>Convert images into multiple formats.</p>
+        <button class="btn" onclick="openTool('Image Converter')">Open</button>
+    </div>
+
+    <div class="tool-card">
+        <div class="icon">📉</div>
+        <h2>Image Compressor</h2>
+        <p>Reduce image size without quality loss.</p>
+        <button class="btn" onclick="openTool('Image Compressor')">Open</button>
+    </div>
+
+    <div class="tool-card">
+        <div class="icon">✂️</div>
+        <h2>Image Crop</h2>
+        <p>Crop images with precision.</p>
+        <button class="btn" onclick="openTool('Image Crop')">Open</button>
+    </div>
+
+    <div class="tool-card">
+        <div class="icon">🎥</div>
+        <h2>Video Converter</h2>
+        <p>Convert videos quickly.</p>
+        <button class="btn" onclick="openTool('Video Converter')">Open</button>
+    </div>
+
+    <div class="tool-card">
+        <div class="icon">🎂</div>
+        <h2>Age Calculator</h2>
+        <p>Calculate exact age instantly.</p>
+        <button class="btn" onclick="openTool('Age Calculator')">Open</button>
+    </div>
+
+    <div class="tool-card">
+        <div class="icon">💰</div>
+        <h2>EMI Calculator</h2>
+        <p>Calculate monthly EMIs easily.</p>
+        <button class="btn" onclick="openTool('EMI Calculator')">Open</button>
+    </div>
+
+    <div class="tool-card">
+        <div class="icon">📈</div>
+        <h2>SIP Calculator</h2>
+        <p>Estimate your SIP returns.</p>
+        <button class="btn" onclick="openTool('SIP Calculator')">Open</button>
+    </div>
+
+    <div class="tool-card">
+        <div class="icon">🎧</div>
+        <h2>Audio Trim</h2>
+        <p>Trim audio files online.</p>
+        <button class="btn" onclick="openTool('Audio Trim')">Open</button>
+    </div>
+
+</div>
+
+<footer>
+© NakulTools. All rights reserved.
+</footer>
+
+<script>
+function openTool(tool){
+    alert(tool + " is coming soon 🚀");
+}
+</script>
+
+</body>
+</html>
