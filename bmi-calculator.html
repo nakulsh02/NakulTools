@@ -1,14 +1,15 @@
- <!DOCTYPE html>
+  
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Age Calculator</title>
-      <link rel="icon" href="favicon.png">
+  <title>BMI Calculator</title>
+ 
   <style>
     body {
-      background: #f4f9ff;
       font-family: Arial, sans-serif;
+      background: #f4faff;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,10 +18,10 @@
     }
 
     .container {
-      background: #fff;
+      background-color: #fff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
       text-align: center;
       width: 90%;
       max-width: 400px;
@@ -31,37 +32,38 @@
       margin-bottom: 20px;
     }
 
-    input[type="date"] {
-      padding: 10px;
+    input {
       width: 100%;
-      font-size: 1rem;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 10px;
-      margin-bottom: 20px;
     }
 
     button {
-      padding: 10px 20px;
       background-color: #007bff;
       color: #fff;
-      font-size: 1rem;
+      padding: 12px 20px;
       border: none;
+      font-size: 16px;
       border-radius: 10px;
       cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
     }
 
     button:hover {
       background-color: #0056b3;
     }
 
-    #result {
+    .result {
       margin-top: 20px;
-      font-size: 1.2rem;
       font-weight: bold;
-      color: #333;
+      font-size: 18px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 500px) {
       .container {
         padding: 20px;
       }
@@ -71,42 +73,40 @@
 <body>
 
   <div class="container">
-    <h1>Age Calculator</h1>
-    <input type="date" id="dob" />
-    <button onclick="calculateAge()">Calculate Age</button>
-    <div id="result"></div>
+    <h1>BMI Calculator</h1>
+    <input type="number" id="weight" placeholder="Enter your weight (kg)" />
+    <input type="number" id="height" placeholder="Enter your height (cm)" />
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div class="result" id="result"></div>
   </div>
 
   <script>
-    function calculateAge() {
-      const dob = document.getElementById("dob").value;
-      if (!dob) {
-        document.getElementById("result").innerText = "Please select your date of birth.";
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value);
+
+      if (!weight || !height || weight <= 0 || height <= 0) {
+        document.getElementById("result").textContent = "Please enter valid numbers.";
         return;
       }
 
-      const birthDate = new Date(dob);
-      const today = new Date();
+      const heightInMeters = height / 100;
+      const bmi = weight / (heightInMeters * heightInMeters);
+      const roundedBMI = bmi.toFixed(1);
 
-      let ageYears = today.getFullYear() - birthDate.getFullYear();
-      let ageMonths = today.getMonth() - birthDate.getMonth();
-      let ageDays = today.getDate() - birthDate.getDate();
+      let category = "";
 
-      if (ageDays < 0) {
-        ageMonths--;
-        ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-      }
+      if (bmi < 18.5) category = "Underweight";
+      else if (bmi < 24.9) category = "Normal weight";
+      else if (bmi < 29.9) category = "Overweight";
+      else category = "Obesity";
 
-      if (ageMonths < 0) {
-        ageYears--;
-        ageMonths += 12;
-      }
-
-      document.getElementById("result").innerText = `You are ${ageYears} years, ${ageMonths} months, and ${ageDays} days old.`;
+      document.getElementById("result").textContent = `Your BMI is ${roundedBMI} (${category})`;
     }
   </script>
 
 </body>
 </html>
 
+  
   
