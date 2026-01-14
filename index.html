@@ -1106,6 +1106,13 @@
                     </ul>
                 </div>
             </div>
+         
+         <!-- ✅ INSTALL BUTTON (footer-bottom se pehle) -->
+<div class="install-container">
+  <button id="installBtn" class="install-btn">
+    Install Nakul Tools
+  </button>
+</div>
             
             <div class="footer-bottom">
                 <p>© 2026 Nakul Tools . All rights reserved.</p>
@@ -1191,6 +1198,26 @@
                 document.getElementById('searchResults').style.display = 'none';
             }
         });
+     let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+if (installBtn) installBtn.style.display = 'none';
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (installBtn) installBtn.style.display = 'inline-block';
+});
+
+if (installBtn) {
+  installBtn.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt = null;
+      installBtn.style.display = 'none';
+    }
+  });
+}
     </script>
 </body>
 </html>
