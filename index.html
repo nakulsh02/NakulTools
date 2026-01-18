@@ -541,6 +541,117 @@
   transform: scale(0.97);
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
+     /* ===== Premium Theme Toggle ===== */
+.theme-toggle-pro{
+  display:flex;
+  align-items:center;
+  margin-left:16px;
+}
+
+.theme-toggle-pro input{
+  display:none;
+}
+
+.theme-toggle-pro label{
+  width:56px;
+  height:28px;
+  background:linear-gradient(135deg,#eaf0ff,#f8fafc);
+  border-radius:999px;
+  position:relative;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 7px;
+  box-shadow:0 6px 18px rgba(37,99,235,.15);
+  transition:.35s cubic-bezier(.4,0,.2,1);
+}
+
+.theme-toggle-pro label::after{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  background:#2563eb;
+  border-radius:50%;
+  left:3px;
+  top:3px;
+  transition:.4s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 6px 14px rgba(0,0,0,.25);
+}
+
+.theme-toggle-pro svg{
+  width:14px;
+  height:14px;
+  stroke:#64748b;
+  fill:none;
+  stroke-width:1.5;
+  z-index:2;
+}
+
+/* Checked toggle */
+.theme-toggle-pro input:checked + label{
+  background:linear-gradient(135deg,#020617,#0f172a);
+}
+
+.theme-toggle-pro input:checked + label::after{
+  transform:translateX(28px);
+  background:#ffffff;
+}
+
+.theme-toggle-pro input:checked + label .sun{
+  opacity:.35;
+}
+
+.theme-toggle-pro input:checked + label .moon{
+  stroke:#38bdf8;
+}
+
+/* ===== DARK MODE SITE-WIDE ===== */
+body.dark{
+  background-color:#0b1120;
+  color:#e5e7eb;
+}
+
+/* Cards / tools */
+body.dark .card,
+body.dark .tool-card{
+  background-color:#111827;
+  color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+/* Buttons */
+body.dark button{
+  background-color:#2563eb;
+  color:#fff;
+}
+
+/* Inputs / search */
+body.dark input,
+body.dark textarea{
+  background-color:#020617;
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+/* Mobile tweaks */
+@media (max-width:768px){
+  .theme-toggle-pro{
+    margin-left:10px;
+  }
+  .theme-toggle-pro label{
+    width:50px;
+    height:26px;
+  }
+  .theme-toggle-pro label::after{
+    width:20px;
+    height:20px;
+  }
+  .theme-toggle-pro input:checked + label::after{
+    transform:translateX(24px);
+  }
+}
      
     </style>
 </head>
@@ -562,6 +673,19 @@
                 <i class="fas fa-envelope"></i>
                 <span>nakulsharma02011@gmail.com</span>
             </div>
+
+         <!-- Premium Dark Mode Toggle -->
+<div class="theme-toggle-pro">
+  <input type="checkbox" id="themeToggle">
+  <label for="themeToggle">
+    <svg class="sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"></circle>
+    </svg>
+    <svg class="moon" viewBox="0 0 24 24">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+    </svg>
+  </label>
+</div>
                
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -1253,6 +1377,23 @@ if (installBtn) {
     }
   });
 }
+
+     
+const toggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Load saved theme
+if(localStorage.getItem('theme') === 'dark'){
+  body.classList.add('dark');
+  toggle.checked = true;
+}
+
+// Toggle dark mode
+toggle.addEventListener('change', ()=>{
+  body.classList.toggle('dark');
+  localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+});
+
     </script>
 </body>
 </html>
