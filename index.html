@@ -541,51 +541,6 @@
   transform: scale(0.97);
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
-     /* Toggle switch style */
-.theme-toggle-pro{
-  display:flex;
-  align-items:center;
-  margin-left:16px;
-}
-
-.theme-toggle-pro input{
-  display:none;
-}
-
-.theme-toggle-pro label{
-  width:50px;
-  height:28px;
-  background:#ccc;
-  border-radius:999px;
-  position:relative;
-  cursor:pointer;
-}
-
-.theme-toggle-pro label .circle{
-  width:22px;
-  height:22px;
-  background:white;
-  border-radius:50%;
-  position:absolute;
-  top:3px;
-  left:3px;
-  transition:.3s;
-}
-
-.theme-toggle-pro input:checked + label{
-  background:#000;
-}
-
-.theme-toggle-pro input:checked + label .circle{
-  transform:translateX(22px);
-  background:white;
-}
-
-/* Dark mode for entire site */
-body.dark{
-  background-color:black;
-  color:white;
-}
      
     </style>
 </head>
@@ -608,18 +563,6 @@ body.dark{
                 <span>nakulsharma02011@gmail.com</span>
             </div>
 
-         <!-- Premium Dark Mode Toggle -->
-<div class="theme-toggle-pro">
-  <input type="checkbox" id="themeToggle">
-  <label for="themeToggle">
-    <svg class="sun" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="5"></circle>
-    </svg>
-    <svg class="moon" viewBox="0 0 24 24">
-      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
-    </svg>
-  </label>
-</div>
                
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -1311,20 +1254,6 @@ if (installBtn) {
     }
   });
 }
-
-     const toggle = document.getElementById('themeToggle');
-const body = document.body;
-
-if(localStorage.getItem('theme')==='dark'){
-    body.classList.add('dark');
-    toggle.checked = true;
-}
-
-toggle.addEventListener('change', ()=>{
-    body.classList.toggle('dark');
-    localStorage.setItem('theme', body.classList.contains('dark') ? 'dark':'light');
-});
-
 
     </script>
 </body>
