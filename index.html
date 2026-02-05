@@ -1,9 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NakulTools</title>
+    <title>NakulTools | Professional All-in-One Tool Suite</title>
  
  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGLE9RQS67"></script>
@@ -11,14 +11,18 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-GGLE9RQS67');
 </script>
  
  <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2563eb">
  
-     <link rel="icon" href="favicon.png">
+ <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+ 
+ <link rel="icon" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -30,28 +34,41 @@
             --text-light: #64748b;
             --white: #ffffff;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --rounded: 8px;
-            --transition: all 0.3s ease;
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --rounded: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --success-green: #10b981;
+            --warning-yellow: #f59e0b;
+            --error-red: #ef4444;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         
         body {
             background-color: var(--bg-gray);
             color: var(--text-dark);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .logo, .cta-button, .install-btn, .section-header h2 {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-weight: 700;
         }
         
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
         
         /* Header */
@@ -60,50 +77,154 @@
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 100;
-            padding: 15px 0;
+            z-index: 1000;
+            padding: 16px 0;
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
         
         .logo {
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-blue);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.3px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .logo:hover {
+            transform: translateY(-2px);
         }
         
         .logo span {
             color: var(--text-dark);
         }
         
+        .logo i {
+            font-size: 20px;
+        }
+        
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 32px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
         }
         
         nav ul li a {
             text-decoration: none;
             color: var(--text-dark);
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
+            font-size: 15px;
+            padding: 6px 0;
+            position: relative;
+            letter-spacing: 0.1px;
+            white-space: nowrap;
         }
         
         nav ul li a:hover {
             color: var(--primary-blue);
         }
         
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .rate-us-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            letter-spacing: 0.2px;
+            animation: pulse 2s infinite;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        
+        .rate-us-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+        }
+        
         .contact-email {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             color: var(--text-light);
             font-size: 14px;
+            background: var(--bg-gray);
+            padding: 8px 16px;
+            border-radius: 24px;
+            transition: var(--transition);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .contact-email:hover {
+            background: #e2e8f0;
+            color: var(--text-dark);
+            transform: translateY(-2px);
         }
         
         .contact-email i {
@@ -114,60 +235,125 @@
             display: none;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 22px;
             color: var(--primary-blue);
             cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--bg-gray);
+            transform: rotate(90deg);
         }
         
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
             color: var(--white);
-            padding: 80px 0;
+            padding: 80px 0 60px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
         }
         
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.3px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideUp 0.8s ease 0.2s both;
+            padding: 0 16px;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero p {
             font-size: 1.1rem;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 32px;
             opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: slideUp 0.8s ease 0.4s both;
+            padding: 0 16px;
         }
         
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background-color: var(--white);
             color: var(--primary-blue);
-            padding: 12px 30px;
+            padding: 14px 32px;
             border-radius: var(--rounded);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
-            margin-bottom: 40px;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+            font-size: 16px;
+            border: 2px solid transparent;
+            letter-spacing: 0.2px;
+            animation: slideUp 0.8s ease 0.6s both;
         }
         
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
         }
         
         .tool-icons {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 32px;
             flex-wrap: wrap;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease 0.8s both;
+            padding: 0 16px;
         }
         
         .tool-icon {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.15);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -175,146 +361,396 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            animation: float 3s ease-in-out infinite;
+            flex-shrink: 0;
         }
         
-        /* Search */
+        .tool-icon:nth-child(1) { animation-delay: 0s; }
+        .tool-icon:nth-child(2) { animation-delay: 0.2s; }
+        .tool-icon:nth-child(3) { animation-delay: 0.4s; }
+        .tool-icon:nth-child(4) { animation-delay: 0.6s; }
+        .tool-icon:nth-child(5) { animation-delay: 0.8s; }
+        .tool-icon:nth-child(6) { animation-delay: 1s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .tool-icon:hover {
+            transform: translateY(-4px) scale(1.1) rotate(5deg);
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            animation-play-state: paused;
+        }
+        
+        /* Search Section */
         .search-section {
-            padding: 30px 0;
-            background-color: var(--white);
-            margin-top: -40px;
-            border-radius: var(--rounded);
-            box-shadow: var(--shadow);
+            padding: 40px 0;
             position: relative;
             z-index: 10;
-            max-width: 900px;
+            max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
+            animation: fadeIn 0.8s ease 1s both;
         }
         
         .search-container {
-            padding: 0 20px;
+            padding: 0 24px;
         }
         
         .search-bar {
             display: flex;
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--rounded);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            animation: scaleIn 0.6s ease 1.2s both;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .search-bar:focus-within {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
         
         .search-bar input {
             flex: 1;
-            padding: 15px 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: var(--rounded) 0 0 var(--rounded);
+            padding: 16px 24px;
+            border: none;
             font-size: 16px;
             outline: none;
-            transition: var(--transition);
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--text-dark);
+            min-width: 0;
         }
         
-        .search-bar input:focus {
-            border-color: var(--primary-blue);
+        .search-bar input::placeholder {
+            color: var(--text-light);
+            font-weight: 400;
         }
         
         .search-bar button {
             background-color: var(--primary-blue);
             color: var(--white);
             border: none;
-            padding: 0 25px;
-            border-radius: 0 var(--rounded) var(--rounded) 0;
+            padding: 0 28px;
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            white-space: nowrap;
         }
         
         .search-bar button:hover {
             background-color: var(--dark-blue);
         }
         
+        /* Search Results */
+        .search-results {
+            display: none;
+            background-color: var(--white);
+            border-radius: var(--rounded);
+            box-shadow: var(--shadow-lg);
+            padding: 24px;
+            margin-top: 16px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #e2e8f0;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .search-results h3 {
+            margin-bottom: 16px;
+            color: var(--primary-blue);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+        
+        .search-results h3 i {
+            font-size: 16px;
+        }
+        
+        .search-results ul {
+            list-style: none;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .search-results ul::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .search-results ul::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        
+        .search-results ul::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        .search-results ul::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        .search-results ul li {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            transition: var(--transition);
+            border-radius: 6px;
+            cursor: pointer;
+            animation: fadeInLeft 0.3s ease both;
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-8px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .search-results ul li:hover {
+            background-color: #f8fafc;
+            transform: translateX(4px);
+        }
+        
+        .search-results ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .search-results ul li .result-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        .search-results ul li .result-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .search-results ul li .result-link i {
+            color: var(--primary-blue);
+            font-size: 14px;
+            min-width: 20px;
+            flex-shrink: 0;
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 15px;
+            animation: fadeIn 0.5s ease;
+        }
+        
         /* Tools Sections */
         .tools-section {
             padding: 60px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
         }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tools-section:nth-of-type(1) { animation-delay: 0.1s; }
+        .tools-section:nth-of-type(2) { animation-delay: 0.2s; }
+        .tools-section:nth-of-type(3) { animation-delay: 0.3s; }
+        .tools-section:nth-of-type(4) { animation-delay: 0.4s; }
+        .tools-section:nth-of-type(5) { animation-delay: 0.5s; }
+        .tools-section:nth-of-type(6) { animation-delay: 0.6s; }
+        .tools-section:nth-of-type(7) { animation-delay: 0.7s; }
+        .tools-section:nth-of-type(8) { animation-delay: 0.8s; }
         
         .section-header {
             text-align: center;
             margin-bottom: 40px;
+            padding: 0 16px;
         }
         
         .section-header h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.75rem;
+            margin-bottom: 12px;
             color: var(--text-dark);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: -0.2px;
         }
         
         .section-header p {
             color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
         }
         
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 24px;
+            width: 100%;
         }
         
         .tool-card {
             background-color: var(--white);
             border-radius: var(--rounded);
-            padding: 25px;
+            padding: 24px;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: cardAppear 0.6s ease forwards;
+        }
+        
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
+        }
+        
+        .tool-card.highlighted {
+            animation: highlightCard 2s ease;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px var(--primary-blue), 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        @keyframes highlightCard {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
         
         .tool-icon-container {
-            width: 50px;
-            height: 50px;
-            background-color: var(--light-blue);
-            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--light-blue), var(--primary-blue));
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            color: var(--primary-blue);
-            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--white);
+            font-size: 22px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .tool-card:hover .tool-icon-container {
+            transform: scale(1.12) rotate(8deg);
         }
         
         .tool-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.4;
+            letter-spacing: -0.1px;
         }
         
         .tool-card p {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+            font-weight: 400;
         }
         
         .tool-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 8px 20px;
-            border-radius: var(--rounded);
+            padding: 10px 24px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 700;
             transition: var(--transition);
+            border: 2px solid transparent;
+            width: fit-content;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.1px;
         }
         
         .tool-button:hover {
             background-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
         }
         
         /* Footer */
         footer {
-            background-color: var(--text-dark);
+            background: linear-gradient(135deg, var(--text-dark), #0f172a);
             color: var(--white);
             padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
         }
         
         .footer-container {
@@ -326,10 +762,20 @@
         
         .footer-logo {
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--white);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             display: block;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.3px;
+            transition: var(--transition);
+        }
+        
+        .footer-logo:hover {
+            transform: translateY(-2px);
         }
         
         .footer-logo span {
@@ -337,27 +783,49 @@
         }
         
         .footer-about p {
-            opacity: 0.8;
+            opacity: 0.85;
             margin-bottom: 20px;
             font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .footer-contact h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--light-blue);
+            font-weight: 700;
+            letter-spacing: 0.2px;
         }
         
         .footer-contact p {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 15px;
-            opacity: 0.8;
+            margin-bottom: 12px;
+            opacity: 0.85;
+            transition: var(--transition);
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+        
+        .footer-contact p:hover {
+            opacity: 1;
+            transform: translateX(4px);
         }
         
         .footer-links h3 {
             font-size: 1.1rem;
             margin-bottom: 20px;
             color: var(--light-blue);
+            font-weight: 700;
+            letter-spacing: 0.2px;
         }
         
         .footer-links ul {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
         
         .footer-links ul li {
@@ -367,91 +835,335 @@
         .footer-links ul li a {
             color: var(--white);
             text-decoration: none;
-            opacity: 0.8;
+            opacity: 0.85;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 400;
         }
         
         .footer-links ul li a:hover {
             opacity: 1;
             color: var(--light-blue);
+            transform: translateX(4px);
+        }
+        
+        .footer-links ul li a i {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        .install-container {
+            text-align: center;
+            margin: 32px 0;
+            animation: fadeIn 0.8s ease 0.5s both;
+        }
+        
+        .install-btn {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            background: linear-gradient(135deg, var(--primary-blue), #38bdf8);
+            color: var(--white);
+            border: 2px solid transparent;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            animation: pulse 2s infinite 1s;
+        }
+        
+        .install-btn:hover {
+            background: linear-gradient(135deg, var(--dark-blue), #0ea5e9);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            animation-play-state: paused;
+        }
+        
+        .install-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 24px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.75;
+            font-weight: 400;
         }
-
-        /* Search Results */
-        .search-results {
+        
+        /* Rating Modal */
+        .rating-modal {
             display: none;
-            background-color: var(--white);
-            border-radius: var(--rounded);
-            box-shadow: var(--shadow);
-            padding: 20px;
-            margin-top: 20px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
         }
-
-        .search-results h3 {
-            margin-bottom: 15px;
-            color: var(--primary-blue);
+        
+        .rating-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
         }
-
-        .search-results ul {
-            list-style: none;
+        
+        .rating-content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideUp 0.4s ease;
+            transform-origin: center;
+            margin: 20px;
         }
-
-        .search-results ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .search-results ul li:last-child {
-            border-bottom: none;
-        }
-
-        .search-results ul li a {
+        
+        .rating-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
             color: var(--text-dark);
-            text-decoration: none;
+            font-weight: 800;
+        }
+        
+        .rating-content p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        
+        .stars-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            direction: ltr; /* Fixed: Changed from rtl to ltr */
+        }
+        
+        .star {
+            font-size: 44px;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+        
+        .star:hover {
+            transform: scale(1.15) rotate(8deg);
+            color: #fbbf24;
+        }
+        
+        .star.selected {
+            color: var(--warning-yellow);
+            animation: starSelect 0.4s ease;
+        }
+        
+        /* FIXED: This is the key fix - removed the ~ selector that was causing issues */
+        .star.selected ~ .star {
+            color: #e2e8f0; /* Make sure unselected stars after the selected one stay gray */
+        }
+        
+        @keyframes starSelect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1.15); }
+        }
+        
+        .rating-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        
+        .rating-btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.2px;
+        }
+        
+        .submit-rating {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            flex: 1;
+        }
+        
+        .submit-rating:hover:not(:disabled) {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .submit-rating:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .cancel-rating {
+            background: #f1f5f9;
+            color: var(--text-dark);
+        }
+        
+        .cancel-rating:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--white);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 3000;
+            transform: translateX(150%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 4px solid var(--success-green);
+            max-width: 350px;
+        }
+        
+        .notification.active {
+            transform: translateX(0);
+        }
+        
+        .notification-icon {
+            font-size: 20px;
+            color: var(--success-green);
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+            font-size: 15px;
+        }
+        
+        .notification-message {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 4px;
+            border-radius: 6px;
             transition: var(--transition);
         }
-
-        .search-results ul li a:hover {
-            color: var(--primary-blue);
+        
+        .notification-close:hover {
+            color: var(--text-dark);
+            background: #f1f5f9;
         }
         
-        /* Responsive */
+        /* Already Rated Button */
+        .already-rated-btn {
+            background: linear-gradient(135deg, var(--success-green), #34d399);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            letter-spacing: 0.2px;
+            cursor: default;
+        }
+        
+        /* JSON and Regex Logo Fix */
+        .tool-card[data-tool-file="json-formatter-validator.html"] .tool-icon-container i {
+            font-size: 20px;
+        }
+        
+        .tool-card[data-tool-file="regex-tester.html"] .tool-icon-container i {
+            font-size: 20px;
+        }
+        
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            backdrop-filter: blur(4px);
+        }
+        
+        .mobile-menu-overlay.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        /* Responsive Fixes */
+        @media (max-width: 1400px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 20px;
+            }
+        }
+        
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .tool-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav ul {
-                gap: 15px;
-            }
-            
-            .hero {
-                padding: 60px 0;
-            }
-            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -460,27 +1172,84 @@
                 font-size: 1rem;
             }
             
-            .tool-icons {
-                gap: 20px;
-            }
-            
-            .search-section {
-                margin-top: -30px;
+            .tool-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 22px;
             }
             
             .section-header h2 {
                 font-size: 1.5rem;
             }
+            
+            .tools-section {
+                padding: 50px 0;
+            }
+            
+            .footer-container {
+                gap: 32px;
+            }
         }
         
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             .header-container {
-                flex-direction: row;
                 justify-content: space-between;
+                gap: 16px;
             }
             
             nav {
                 display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--white);
+                padding: 80px 24px 40px;
+                z-index: 999;
+                overflow-y: auto;
+                animation: slideInRight 0.3s ease;
+                width: 100%;
+                height: 100vh;
+            }
+            
+            @keyframes slideInRight {
+                from { transform: translateX(100%); }
+                to { transform: translateX(0); }
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 14px 16px;
+                border-radius: 8px;
+                font-size: 16px;
+                width: 100%;
+            }
+            
+            nav ul li a:hover {
+                background: var(--bg-gray);
+            }
+            
+            .rate-us-btn, .already-rated-btn {
+                width: 100%;
+                justify-content: center;
+                margin-top: 16px;
+                padding: 14px 20px;
+                font-size: 15px;
             }
             
             .contact-email {
@@ -488,73 +1257,299 @@
             }
             
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                order: 3;
+            }
+            
+            .logo {
+                order: 1;
+                flex: 1;
+            }
+            
+            .hero {
+                padding: 60px 0 40px;
             }
             
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.75rem;
+                padding: 0 12px;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+                padding: 0 12px;
+            }
+            
+            .cta-button {
+                padding: 12px 28px;
+                font-size: 15px;
+                margin-bottom: 40px;
+            }
+            
+            .tool-icons {
+                gap: 20px;
+                padding: 0 12px;
+            }
+            
+            .tool-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 20px;
+            }
+            
+            .search-section {
+                padding: 32px 0;
+            }
+            
+            .search-container {
+                padding: 0 16px;
             }
             
             .search-bar {
                 flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+                gap: 12px;
             }
             
             .search-bar input {
                 border-radius: var(--rounded);
-                margin-bottom: 10px;
+                padding: 14px 20px;
+                font-size: 15px;
+                background: var(--white);
+                box-shadow: var(--shadow);
+                width: 100%;
             }
             
             .search-bar button {
                 border-radius: var(--rounded);
-                padding: 15px;
+                padding: 14px;
+                width: 100%;
+                justify-content: center;
+                font-size: 15px;
+            }
+            
+            .section-header {
+                margin-bottom: 32px;
+                padding: 0 12px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.35rem;
+            }
+            
+            .section-header p {
+                font-size: 0.95rem;
+            }
+            
+            .tools-section {
+                padding: 40px 0;
             }
             
             .tools-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 16px;
+            }
+            
+            .tool-card {
+                padding: 20px;
+                width: 100%;
+                margin: 0 auto;
+            }
+            
+            .rating-content {
+                padding: 24px;
+                margin: 16px;
+            }
+            
+            .rating-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .star {
+                font-size: 38px;
+            }
+            
+            .rating-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .rating-btn {
+                width: 100%;
+                padding: 14px;
             }
             
             .footer-container {
                 grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 0 20px;
+            }
+            
+            .install-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 15px;
+            }
+            
+            .notification {
+                left: 16px;
+                right: 16px;
+                max-width: none;
+                top: 16px;
             }
         }
-     .install-btn {
-  padding: 12px 26px;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  background: linear-gradient(135deg, #2563eb, #38bdf8);
-  color: #ffffff;
-  border: 2px solid transparent;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: all 0.35s ease;
-  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
-}
-
-.install-btn:hover {
-  background: linear-gradient(135deg, #1e40af, #0ea5e9);
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
-}
-
-.install-btn:active {
-  transform: scale(0.97);
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-}
-     
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .tool-icons {
+                gap: 16px;
+            }
+            
+            .tool-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.25rem;
+            }
+            
+            .tools-grid {
+                padding: 0 12px;
+            }
+            
+            .tool-card {
+                padding: 18px;
+            }
+            
+            .rating-content {
+                padding: 20px;
+                margin: 12px;
+            }
+            
+            .rating-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .star {
+                font-size: 32px;
+            }
+            
+            .footer-logo {
+                font-size: 22px;
+            }
+            
+            .footer-about p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.35rem;
+            }
+            
+            .hero p {
+                font-size: 0.85rem;
+            }
+            
+            .cta-button {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+            
+            .tool-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+            
+            .tools-grid {
+                padding: 0 8px;
+            }
+            
+            .tool-card {
+                padding: 16px;
+            }
+            
+            .tool-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .tool-card p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Ensure perfect symmetry */
+        .tools-grid > * {
+            display: flex;
+        }
+        
+        .tool-card {
+            flex: 1;
+            min-height: 280px;
+        }
+        
+        /* Fix mobile touch targets */
+        button, 
+        a, 
+        .star {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Prevent horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Improve text readability on mobile */
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+            
+            h1, h2, h3 {
+                line-height: 1.3;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">Nakul<span>Tools</span></a>
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                Nakul<span>Tools</span>
+            </a>
             
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#tools">All Tools</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <button class="rate-us-btn" id="rateUsBtn">
+                            <i class="fas fa-star"></i> Rate Us
+                        </button>
+                    </li>
                 </ul>
             </nav>
             
@@ -562,9 +1557,8 @@
                 <i class="fas fa-envelope"></i>
                 <span>nakulsharma02011@gmail.com</span>
             </div>
-
-               
-            <button class="mobile-menu-btn">
+           
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -573,9 +1567,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Your Daily Tools, All in One Place</h1>
-            <p>Convert, calculate, compress, and simplify your everyday tasks — fast and free.</p>
-            <a href="#tools" class="cta-button">Explore Tools</a>
+            <h1>Professional Tools for Your Daily Needs</h1>
+            <p>Convert, calculate, compress, and simplify your everyday tasks with our powerful, free online tools.</p>
+            <a href="#tools" class="cta-button">
+                <i class="fas fa-rocket"></i> Explore All Tools
+            </a>
             
             <div class="tool-icons">
                 <div class="tool-icon">
@@ -602,516 +1598,613 @@
     
     <!-- Search Section -->
     <section class="search-section">
-        <div class="search-container">
-            <div class="search-bar">
-                <input type="text" placeholder="Search a tool..." id="searchInput">
-                <button type="button" id="searchButton"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="search-results" id="searchResults">
-                <h3>Search Results</h3>
-                <ul id="resultsList">
-                    <!-- Results will be populated here -->
-                </ul>
+        <div class="container">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for any tool..." id="searchInput" autocomplete="off">
+                    <button type="button" id="searchButton">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <h3><i class="fas fa-search"></i> Search Results</h3>
+                    <ul id="resultsList">
+                        <!-- Results will be populated here -->
+                    </ul>
+                    <div class="no-results" id="noResults" style="display: none;">
+                        No tools found matching your search. Try different keywords.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     
     <!-- Image Tools Section -->
-    <section class="tools-section" id="tools">
+    <section class="tools-section animate-on-scroll" id="tools">
         <div class="container">
             <div class="section-header">
-                <h2>🖼 Image Tools</h2>
-                <p>Edit, convert and optimize your images with our powerful tools</p>
+                <h2><i class="fas fa-image"></i> Image Tools</h2>
+                <p>Edit, convert and optimize your images with our professional tools</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Image Converter" data-tool-file="image-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
                     <h3>Image Converter</h3>
-                    <p>Convert between JPG, PNG, GIF, WEBP and more formats</p>
-                    <a href="image-converter.html" class="tool-button">Use Tool</a>
+                    <p>Convert between JPG, PNG, GIF, WEBP and more formats with high quality</p>
+                    <a href="image-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Image Compressor" data-tool-file="image-compressor.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-compress-alt"></i>
                     </div>
                     <h3>Image Compressor</h3>
-                    <p>Reduce image file size without losing quality</p>
-                    <a href="image-compressor.html" class="tool-button">Use Tool</a>
+                    <p>Reduce image file size without losing visual quality</p>
+                    <a href="image-compressor.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Image Resizer" data-tool-file="image-resizer.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-expand-alt"></i>
                     </div>
                     <h3>Image Resizer</h3>
                     <p>Resize images to any dimension while maintaining aspect ratio</p>
-                    <a href="image-resizer.html" class="tool-button">Use Tool</a>
+                    <a href="image-resizer.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Image Cropper" data-tool-file="image-cropper.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-crop-alt"></i>
                     </div>
                     <h3>Image Cropper</h3>
                     <p>Crop images to remove unwanted areas or focus on specific parts</p>
-                    <a href="image-cropper.html" class="tool-button">Use Tool</a>
+                    <a href="image-cropper.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Image to Text (OCR)" data-tool-file="image-to-text.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-font"></i>
                     </div>
                     <h3>Image to Text (OCR)</h3>
                     <p>Extract text from images with optical character recognition</p>
-                    <a href="image-to-text.html" class="tool-button">Use Tool</a>
+                    <a href="image-to-text.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Image Rotator/Flipper" data-tool-file="image-rotator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-sync-alt"></i>
                     </div>
                     <h3>Image Rotator/Flipper</h3>
                     <p>Rotate or flip images horizontally/vertically</p>
-                    <a href="image-rotator" class="tool-button">Use Tool</a>
+                    <a href="image-rotator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Document Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section animate-on-scroll" style="background-color: #f1f5f9;">
         <div class="container">
             <div class="section-header">
-                <h2>📄 Document Tools</h2>
-                <p>Manage and convert your documents with ease</p>
+                <h2><i class="fas fa-file-alt"></i> Document Tools</h2>
+                <p>Manage and convert your documents with professional precision</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="PDF to Word / Word to PDF" data-tool-file="pdf-to-word.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <h3>PDF to Word / Word to PDF</h3>
                     <p>Convert between PDF and Word documents seamlessly</p>
-                    <a href="pdf-to-word.html" class="tool-button">Use Tool</a>
+                    <a href="pdf-to-word.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="PDF Compressor" data-tool-file="pdf-compressor.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-file-archive"></i>
                     </div>
                     <h3>PDF Compressor</h3>
                     <p>Reduce PDF file size while maintaining quality</p>
-                    <a href="pdf-compressor.html" class="tool-button">Use Tool</a>
+                    <a href="pdf-compressor.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="PDF Merger & Splitter" data-tool-file="pdf-merge-splitter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-cut"></i>
                     </div>
                     <h3>PDF Merger & Splitter</h3>
                     <p>Combine multiple PDFs or split pages from a PDF</p>
-                    <a href="pdf-merge-and-splitter.html" class="tool-button">Use Tool</a>
+                    <a href="pdf-merge-splitter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Document Converter" data-tool-file="document-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
                     <h3>Document Converter</h3>
                     <p>Convert between various document formats</p>
-                    <a href="document-converter.html" class="tool-button">Use Tool</a>
+                    <a href="document-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="PDF Lock/Unlock" data-tool-file="pdf-lock-unlock.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-lock"></i>
                     </div>
                     <h3>PDF Lock/Unlock</h3>
                     <p>Add or remove passwords from PDF files</p>
-                    <a href="pdf-lock-unlock.html" class="tool-button">Use Tool</a>
+                    <a href="pdf-lock-unlock.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="eSign PDF" data-tool-file="e-sign-pdf.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-signature"></i>
                     </div>
                     <h3>eSign PDF</h3>
                     <p>Add digital signatures to your PDF documents</p>
-                    <a href="e-sign.html" class="tool-button">Use Tool</a>
+                    <a href="e-sign-pdf.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Calculator Tools Section -->
-    <section class="tools-section">
+    <section class="tools-section animate-on-scroll">
         <div class="container">
             <div class="section-header">
-                <h2>🧮 Calculator Tools</h2>
-                <p>Perform various calculations for your daily needs</p>
+                <h2><i class="fas fa-calculator"></i> Calculator Tools</h2>
+                <p>Perform various calculations for your daily professional needs</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Scientific Calculator" data-tool-file="scientific-calculator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-square-root-alt"></i>
                     </div>
                     <h3>Scientific Calculator</h3>
                     <p>Advanced calculator with scientific functions</p>
-                    <a href="scientific-calculator.html" class="tool-button">Use Tool</a>
+                    <a href="scientific-calculator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Age Calculator" data-tool-file="age-calculator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-birthday-cake"></i>
                     </div>
                     <h3>Age Calculator</h3>
                     <p>Calculate age from birth date to current date</p>
-                    <a href="age-calculator.html" class="tool-button">Use Tool</a>
+                    <a href="age-calculator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="BMI Calculator" data-tool-file="bmi-calculator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-weight"></i>
                     </div>
                     <h3>BMI Calculator</h3>
                     <p>Calculate your Body Mass Index</p>
-                    <a href="bmi-calculator.html" class="tool-button">Use Tool</a>
+                    <a href="bmi-calculator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Loan EMI Calculator" data-tool-file="loan-emi-calculator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-home"></i>
                     </div>
                     <h3>Loan EMI Calculator</h3>
                     <p>Calculate Equated Monthly Installments for loans</p>
-                    <a href="loan-emi-calculator.html" class="tool-button">Use Tool</a>
+                    <a href="loan-emi-calculator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="GST Calculator" data-tool-file="gst-calculator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-percentage"></i>
                     </div>
                     <h3>GST Calculator</h3>
                     <p>Calculate Goods and Services Tax amounts</p>
-                    <a href="gst-calculator.html" class="tool-button">Use Tool</a>
+                    <a href="gst-calculator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Currency Converter" data-tool-file="currency-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-money-bill-wave"></i>
                     </div>
                     <h3>Currency Converter</h3>
                     <p>Convert between world currencies with live rates</p>
-                    <a href="currency-calculator.html" class="tool-button">Use Tool</a>
+                    <a href="currency-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Text Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section animate-on-scroll" style="background-color: #f1f5f9;">
         <div class="container">
             <div class="section-header">
-                <h2>🔤 Text Tools</h2>
-                <p>Manipulate and analyze text with our text processing tools</p>
+                <h2><i class="fas fa-font"></i> Text Tools</h2>
+                <p>Manipulate and analyze text with our professional text processing tools</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Text Case Converter" data-tool-file="text-case-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-text-height"></i>
                     </div>
                     <h3>Text Case Converter</h3>
                     <p>Change text between uppercase, lowercase and more</p>
-                    <a href="text-case.html" class="tool-button">Use Tool</a>
+                    <a href="text-case-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Word & Character Counter" data-tool-file="word-character-counter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-sort-amount-down"></i>
                     </div>
                     <h3>Word & Character Counter</h3>
                     <p>Count words, characters, sentences and paragraphs</p>
-                    <a href="Word Counter.html" class="tool-button">Use Tool</a>
+                    <a href="word-character-counter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Remove Duplicate Lines" data-tool-file="remove-duplicate-lines.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-filter"></i>
                     </div>
                     <h3>Remove Duplicate Lines</h3>
                     <p>Clean up text by removing duplicate lines</p>
-                    <a href="duplicate-line.html" class="tool-button">Use Tool</a>
+                    <a href="remove-duplicate-lines.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Text Sorter" data-tool-file="text-sorter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-sort-alpha-down"></i>
                     </div>
                     <h3>Text Sorter</h3>
                     <p>Sort lines of text alphabetically or numerically</p>
-                    <a href="text-shortener.html" class="tool-button">Use Tool</a>
+                    <a href="text-sorter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Text Reverser" data-tool-file="text-reverser.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-undo"></i>
                     </div>
                     <h3>Text Reverser</h3>
                     <p>Reverse text, words, or character order</p>
-                    <a href="text-reverse.html" class="tool-button">Use Tool</a>
+                    <a href="text-reverser.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Text Encryptor/Decryptor" data-tool-file="text-encryptor-decryptor.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-lock"></i>
                     </div>
                     <h3>Text Encryptor/Decryptor</h3>
                     <p>Encrypt and decrypt text with secure algorithms</p>
-                    <a href="text-encryptor-decryptor.html" class="tool-button">Use Tool</a>
+                    <a href="text-encryptor-decryptor.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Web/Developer Tools Section -->
-    <section class="tools-section">
+    <section class="tools-section animate-on-scroll">
         <div class="container">
             <div class="section-header">
-                <h2>🌐 Web/Developer Tools</h2>
-                <p>Essential tools for developers and webmasters</p>
+                <h2><i class="fas fa-code"></i> Web/Developer Tools</h2>
+                <p>Essential professional tools for developers and webmasters</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="HTML/CSS/JS Minifier" data-tool-file="minifier.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-file-code"></i>
                     </div>
                     <h3>HTML/CSS/JS Minifier</h3>
                     <p>Minify your code to reduce file size and improve performance</p>
-                    <a href="minifier.html" class="tool-button">Use Tool</a>
+                    <a href="minifier.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="JSON Formatter & Validator" data-tool-file="json-formatter-validator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-brackets-curly"></i>
                     </div>
                     <h3>JSON Formatter & Validator</h3>
                     <p>Format and validate JSON data for readability and correctness</p>
-                    <a href="json-formatter-validator.html" class="tool-button">Use Tool</a>
+                    <a href="json-formatter-validator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Base64 Encoder/Decoder" data-tool-file="base64-encoder-decoder.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-key"></i>
                     </div>
                     <h3>Base64 Encoder/Decoder</h3>
                     <p>Encode and decode Base64 strings and files</p>
-                    <a href="base64-encoder-decode.html" class="tool-button">Use Tool</a>
+                    <a href="base64-encoder-decoder.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="URL Encoder/Decoder" data-tool-file="url-encoder-decoder.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-link"></i>
                     </div>
                     <h3>URL Encoder/Decoder</h3>
                     <p>Encode or decode URLs to make them web-safe</p>
-                    <a href="url-encoder-decoder.html" class="tool-button">Use Tool</a>
+                    <a href="url-encoder-decoder.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Color Picker & Converter" data-tool-file="color-picker-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-palette"></i>
                     </div>
                     <h3>Color Picker & Converter</h3>
                     <p>Pick colors and convert between different color formats</p>
-                    <a href="color-picker-converter.html" class="tool-button">Use Tool</a>
+                    <a href="color-picker-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Regex Tester" data-tool-file="regex-tester.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-regex"></i>
                     </div>
                     <h3>Regex Tester</h3>
                     <p>Test and debug regular expressions in real-time</p>
-                    <a href="Regex-Tester.html" class="tool-button">Use Tool</a>
+                    <a href="regex-tester.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Color Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section animate-on-scroll" style="background-color: #f1f5f9;">
         <div class="container">
             <div class="section-header">
-                <h2>🎨 Color Tools</h2>
-                <p>Create, convert and analyze colors for your designs</p>
+                <h2><i class="fas fa-palette"></i> Color Tools</h2>
+                <p>Create, convert and analyze colors for professional designs</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Color Picker from Image" data-tool-file="color-picker-from-image.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-eye-dropper"></i>
                     </div>
                     <h3>Color Picker from Image</h3>
                     <p>Extract color palettes from any uploaded image</p>
-                    <a href="Color Picker from Image.html" class="tool-button">Use Tool</a>
+                    <a href="color-picker-from-image.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="HEX to RGB Converter" data-tool-file="hex-to-rgb-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
                     <h3>HEX to RGB Converter</h3>
                     <p>Convert between HEX and RGB color formats</p>
-                    <a href="HEX to RGB Converter.html" class="tool-button">Use Tool</a>
+                    <a href="hex-to-rgb-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Gradient Generator" data-tool-file="gradient-generator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-sliders-h"></i>
                     </div>
                     <h3>Gradient Generator</h3>
                     <p>Create beautiful CSS gradients with custom controls</p>
-                    <a href="Gradient Converter.html" class="tool-button">Use Tool</a>
+                    <a href="gradient-generator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Contrast Checker" data-tool-file="contrast-checker.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-adjust"></i>
                     </div>
                     <h3>Contrast Checker</h3>
                     <p>Check color contrast ratios for accessibility standards</p>
-                    <a href="Contrast Checker.html" class="tool-button">Use Tool</a>
+                    <a href="contrast-checker.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Palette Generator" data-tool-file="palette-generator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-swatchbook"></i>
                     </div>
                     <h3>Palette Generator</h3>
                     <p>Generate harmonious color palettes for your projects</p>
-                    <a href="Palette Generator.html" class="tool-button">Use Tool</a>
+                    <a href="palette-generator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Color Blindness Simulator" data-tool-file="color-blindness-simulator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-low-vision"></i>
                     </div>
                     <h3>Color Blindness Simulator</h3>
                     <p>Simulate how colors appear to people with color vision deficiencies</p>
-                    <a href="Color Blindness Simulator.html" class="tool-button">Use Tool</a>
+                    <a href="color-blindness-simulator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SEO & Marketing Tools Section -->
-    <section class="tools-section" style="background-color: #f1f5f9;">
+    <section class="tools-section animate-on-scroll" style="background-color: #f1f5f9;">
         <div class="container">
             <div class="section-header">
-                <h2>🌍 SEO & Marketing Tools</h2>
+                <h2><i class="fas fa-chart-line"></i> SEO & Marketing Tools</h2>
                 <p>Optimize your content and analyze your website performance</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Keyword Density Checker" data-tool-file="keyword-density-checker.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-key"></i>
                     </div>
                     <h3>Keyword Density Checker</h3>
                     <p>Analyze keyword frequency and density in your content</p>
-                    <a href="Density Checker.html" class="tool-button">Use Tool</a>
+                    <a href="keyword-density-checker.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Meta Tag Analyzer" data-tool-file="meta-tag-analyzer.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-tags"></i>
                     </div>
                     <h3>Meta Tag Analyzer</h3>
                     <p>Check and analyze meta tags for SEO optimization</p>
-                    <a href="Meta Tag Analyzer.html" class="tool-button">Use Tool</a>
+                    <a href="meta-tag-analyzer.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Word Counter" data-tool-file="word-counter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-font"></i>
                     </div>
                     <h3>Word Counter</h3>
                     <p>Count words, characters and reading time for SEO content</p>
-                    <a href="Word Counter.html" class="tool-button">Use Tool</a>
+                    <a href="word-counter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Utility Tools Section -->
-    <section class="tools-section">
+    <section class="tools-section animate-on-scroll">
         <div class="container">
             <div class="section-header">
-                <h2>🛠️ Utility Tools</h2>
-                <p>Handy tools for various everyday needs</p>
+                <h2><i class="fas fa-tools"></i> Utility Tools</h2>
+                <p>Professional tools for various everyday needs</p>
             </div>
             
             <div class="tools-grid">
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="QR Code Generator & Scanner" data-tool-file="qr-code-generator-scanner.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-qrcode"></i>
                     </div>
                     <h3>QR Code Generator & Scanner</h3>
                     <p>Create and scan QR codes for URLs, text, and more</p>
-                    <a href="QR-Code-Generator.html" class="tool-button">Use Tool</a>
+                    <a href="qr-code-generator-scanner.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Barcode Generator" data-tool-file="barcode-generator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-barcode"></i>
                     </div>
                     <h3>Barcode Generator</h3>
                     <p>Generate barcodes in various formats for products</p>
-                    <a href="Barcode Generator.html" class="tool-button">Use Tool</a>
+                    <a href="barcode-generator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="UUID Generator" data-tool-file="uuid-generator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-fingerprint"></i>
                     </div>
                     <h3>UUID Generator</h3>
                     <p>Generate universally unique identifiers (UUIDs)</p>
-                    <a href="UUID Generator.html" class="tool-button">Use Tool</a>
+                    <a href="uuid-generator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Unit Converter" data-tool-file="unit-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-ruler-combined"></i>
                     </div>
                     <h3>Unit Converter</h3>
                     <p>Convert between various units of measurement</p>
-                    <a href="Unit Converter.html" class="tool-button">Use Tool</a>
+                    <a href="unit-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Time Zone Converter" data-tool-file="time-zone-converter.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-globe"></i>
                     </div>
                     <h3>Time Zone Converter</h3>
                     <p>Convert times between different time zones</p>
-                    <a href="Time Zone Converter.html" class="tool-button">Use Tool</a>
+                    <a href="time-zone-converter.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
                 
-                <div class="tool-card">
+                <div class="tool-card animate-on-scroll" data-tool-name="Random Number/Password Generator" data-tool-file="random-password-generator.html">
                     <div class="tool-icon-container">
                         <i class="fas fa-random"></i>
                     </div>
                     <h3>Random Number/Password Generator</h3>
                     <p>Generate secure random numbers and passwords</p>
-                    <a href="Random Password Generator.html" class="tool-button">Use Tool</a>
+                    <a href="random-password-generator.html" class="tool-button">
+                        <i class="fas fa-external-link-alt"></i> Use Tool
+                    </a>
                 </div>
             </div>
         </div>
@@ -1122,142 +2215,764 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="#" class="footer-logo">Nakul<span>Tools</span></a>
-                    <p>Simplifying your digital life with powerful, easy-to-use tools for all your needs.</p>
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-tools"></i>
+                        Nakul<span>Tools</span>
+                    </a>
+                    <p>Professional tools suite for all your digital needs. Convert, calculate, optimize, and simplify your workflow with our comprehensive collection of free online tools.</p>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-envelope"></i> nakulsharma02011@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Available 24/7</p>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#tools">All Tools</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="term-conditions.html">Terms of Use</a></li>
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#tools"><i class="fas fa-chevron-right"></i> All Tools</a></li>
+                        <li><a href="privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html"><i class="fas fa-chevron-right"></i> Terms of Use</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#" id="footerRateUsBtn"><i class="fas fa-chevron-right"></i> Rate Us</a></li>
+                        <li><a href="#" id="footerInstallBtn"><i class="fas fa-chevron-right"></i> Install App</a></li>
                     </ul>
                 </div>
             </div>
          
-         <!-- ✅ INSTALL BUTTON (footer-bottom se pehle) -->
+         <!-- Install Button -->
 <div class="install-container">
-  <button id="installBtn" class="install-btn">
-    Install Nakul Tools
-  </button>
+    <button id="installBtn" class="install-btn">
+        <i class="fas fa-download"></i> Install NakulTools App
+    </button>
 </div>
             
             <div class="footer-bottom">
-                <p>© 2026 Nakul Tools . All rights reserved.</p>
+                <p>© 2026 NakulTools | Professional Online Tools Suite. All rights reserved.</p>
             </div>
         </div>
     </footer>
     
+    <!-- Rating Modal -->
+    <div class="rating-modal" id="ratingModal">
+        <div class="rating-content">
+            <h3>Rate NakulTools</h3>
+            <p>How would you rate your experience with our tools?</p>
+            
+            <div class="stars-container" id="starsContainer">
+                <div class="star" data-value="1">★</div>
+                <div class="star" data-value="2">★</div>
+                <div class="star" data-value="3">★</div>
+                <div class="star" data-value="4">★</div>
+                <div class="star" data-value="5">★</div>
+            </div>
+            
+            <div id="ratingText" style="margin-bottom: 24px; color: var(--text-dark); font-weight: 600; font-size: 1rem; min-height: 24px; text-align: center;">
+                <!-- Rating text will appear here -->
+            </div>
+            
+            <div class="rating-buttons">
+                <button class="rating-btn cancel-rating" id="cancelRating">Cancel</button>
+                <button class="rating-btn submit-rating" id="submitRating" disabled>Submit Rating</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-content">
+            <div class="notification-title" id="notificationTitle">Success!</div>
+            <div class="notification-message" id="notificationMessage">Your rating has been submitted successfully.</div>
+        </div>
+        <button class="notification-close" id="notificationClose">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
     <script>
-        // Mobile menu toggle functionality
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            const nav = document.querySelector('nav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-        });
+        // Enhanced Search Functionality with Card Highlighting
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const searchResults = document.getElementById('searchResults');
+        const resultsList = document.getElementById('resultsList');
+        const noResults = document.getElementById('noResults');
+        const toolCards = document.querySelectorAll('.tool-card');
         
-        // Search functionality
-        document.getElementById('searchButton').addEventListener('click', function() {
-            performSearch();
-        });
+        // Store all tools data
+        const toolsData = Array.from(toolCards).map(card => ({
+            element: card,
+            name: card.querySelector('h3').textContent.trim(),
+            description: card.querySelector('p').textContent.trim(),
+            file: card.getAttribute('data-tool-file'),
+            category: card.closest('.tools-section').querySelector('h2').textContent.trim().replace(/[^\w\s]/gi, ''),
+            icon: card.querySelector('.tool-icon-container i').className
+        }));
         
-        // Also search when Enter key is pressed
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
+        // Debounce search function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
         
+        // Highlight card function
+        function highlightCard(cardElement) {
+            // Remove highlight from all cards
+            toolCards.forEach(card => {
+                card.classList.remove('highlighted');
+            });
+            
+            // Add highlight to target card
+            cardElement.classList.add('highlighted');
+            
+            // Scroll to the card with offset for header
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const cardPosition = cardElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = cardPosition - headerHeight - 10;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+            
+            // Remove highlight after 3 seconds
+            setTimeout(() => {
+                cardElement.classList.remove('highlighted');
+            }, 3000);
+        }
+        
+        // Search function
         function performSearch() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const resultsContainer = document.getElementById('searchResults');
-            const resultsList = document.getElementById('resultsList');
-            
-            // Clear previous results
+            const searchTerm = searchInput.value.trim().toLowerCase();
             resultsList.innerHTML = '';
+            noResults.style.display = 'none';
             
-            if (searchTerm.trim() === '') {
-                resultsContainer.style.display = 'none';
+            if (searchTerm === '') {
+                searchResults.style.display = 'none';
                 return;
             }
             
-            // Get all tool cards
-            const toolCards = document.querySelectorAll('.tool-card');
-            let foundResults = false;
+            // Filter tools
+            const filteredTools = toolsData.filter(tool => 
+                tool.name.toLowerCase().includes(searchTerm) ||
+                tool.description.toLowerCase().includes(searchTerm) ||
+                tool.category.toLowerCase().includes(searchTerm) ||
+                (tool.file && tool.file.toLowerCase().includes(searchTerm))
+            );
             
-            toolCards.forEach(card => {
-                const toolName = card.querySelector('h3').textContent.toLowerCase();
-                const toolDesc = card.querySelector('p').textContent.toLowerCase();
-                
-                if (toolName.includes(searchTerm) || toolDesc.includes(searchTerm)) {
-                    foundResults = true;
+            if (filteredTools.length > 0) {
+                filteredTools.forEach(tool => {
                     const listItem = document.createElement('li');
-                    const link = document.createElement('a');
-                    link.href = '#' + card.closest('.tools-section').id;
-                    link.textContent = toolName;
-                    link.onclick = function() {
-                        // Scroll to the tool section
-                        card.scrollIntoView({ behavior: 'smooth' });
-                        // Highlight the card
-                        card.style.boxShadow = '0 0 0 3px var(--primary-blue)';
-                        setTimeout(() => {
-                            card.style.boxShadow = 'var(--shadow)';
-                        }, 2000);
-                        resultsContainer.style.display = 'none';
-                    };
-                    listItem.appendChild(link);
+                    listItem.style.animationDelay = `${Math.random() * 0.2}s`;
+                    
+                    const resultLink = document.createElement('div');
+                    resultLink.className = 'result-link';
+                    
+                    const icon = document.createElement('i');
+                    if (tool.icon) {
+                        icon.className = tool.icon;
+                    } else {
+                        icon.className = 'fas fa-tools';
+                    }
+                    
+                    const textContainer = document.createElement('span');
+                    textContainer.style.flex = '1';
+                    
+                    const toolName = document.createElement('div');
+                    toolName.textContent = tool.name;
+                    toolName.style.fontWeight = '700';
+                    toolName.style.color = 'var(--text-dark)';
+                    toolName.style.fontSize = '14px';
+                    
+                    const toolCategory = document.createElement('div');
+                    toolCategory.textContent = tool.category;
+                    toolCategory.style.fontSize = '0.8rem';
+                    toolCategory.style.color = 'var(--text-light)';
+                    toolCategory.style.marginTop = '2px';
+                    
+                    textContainer.appendChild(toolName);
+                    textContainer.appendChild(toolCategory);
+                    
+                    resultLink.appendChild(icon);
+                    resultLink.appendChild(textContainer);
+                    
+                    // Add click handler
+                    resultLink.addEventListener('click', () => {
+                        highlightCard(tool.element);
+                        searchResults.style.display = 'none';
+                        searchInput.value = '';
+                    });
+                    
+                    listItem.appendChild(resultLink);
                     resultsList.appendChild(listItem);
-                }
-            });
-            
-            if (foundResults) {
-                resultsContainer.style.display = 'block';
+                });
+                searchResults.style.display = 'block';
             } else {
-                const listItem = document.createElement('li');
-                listItem.textContent = 'No tools found matching your search.';
-                resultsList.appendChild(listItem);
-                resultsContainer.style.display = 'block';
+                noResults.style.display = 'block';
+                searchResults.style.display = 'block';
             }
         }
         
+        // Event listeners for search
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('input', debounce(performSearch, 300));
+        
         // Close search results when clicking outside
         document.addEventListener('click', function(event) {
-            const searchContainer = document.querySelector('.search-container');
-            if (!searchContainer.contains(event.target)) {
-                document.getElementById('searchResults').style.display = 'none';
+            if (!searchInput.contains(event.target) && 
+                !searchButton.contains(event.target) && 
+                !searchResults.contains(event.target)) {
+                searchResults.style.display = 'none';
             }
         });
-     let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-
-if (installBtn) installBtn.style.display = 'none';
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  if (installBtn) installBtn.style.display = 'inline-block';
-});
-
-if (installBtn) {
-  installBtn.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt = null;
-      installBtn.style.display = 'none';
-    }
-  });
-}
-
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const nav = document.getElementById('mainNav');
+        
+        function toggleMobileMenu() {
+            nav.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+            
+            // Change menu icon
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            if (nav.classList.contains('active')) {
+                menuIcon.className = 'fas fa-times';
+                mobileMenuBtn.style.transform = 'rotate(180deg)';
+            } else {
+                menuIcon.className = 'fas fa-bars';
+                mobileMenuBtn.style.transform = 'rotate(0)';
+            }
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+        
+        // Close mobile menu when clicking a link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+        
+        // Rating System - FIXED STAR RATING
+        const ratingModal = document.getElementById('ratingModal');
+        const rateUsBtn = document.getElementById('rateUsBtn');
+        const footerRateUsBtn = document.getElementById('footerRateUsBtn');
+        const starsContainer = document.getElementById('starsContainer');
+        const stars = starsContainer.querySelectorAll('.star');
+        const submitRatingBtn = document.getElementById('submitRating');
+        const cancelRatingBtn = document.getElementById('cancelRating');
+        const notification = document.getElementById('notification');
+        const notificationTitle = document.getElementById('notificationTitle');
+        const notificationMessage = document.getElementById('notificationMessage');
+        const notificationClose = document.getElementById('notificationClose');
+        const ratingText = document.getElementById('ratingText');
+        const footerInstallBtn = document.getElementById('footerInstallBtn');
+        
+        let selectedRating = 0;
+        let hasRated = localStorage.getItem('nakultools_rated') === 'true';
+        let ratingSubmitted = false;
+        
+        // Rating descriptions
+        const ratingDescriptions = {
+            1: "😞 Poor - Needs significant improvement",
+            2: "😐 Fair - Could be better",
+            3: "🙂 Good - Meets expectations",
+            4: "😊 Very Good - Great experience",
+            5: "🤩 Excellent - Perfect!"
+        };
+        
+        // Update button if already rated
+        if (hasRated) {
+            updateRatingButton();
+        }
+        
+        // Update rating button function
+        function updateRatingButton() {
+            const rateButton = document.getElementById('rateUsBtn');
+            if (rateButton) {
+                rateButton.innerHTML = '<i class="fas fa-check"></i> Already Rated';
+                rateButton.className = 'already-rated-btn';
+                rateButton.disabled = true;
+                rateButton.style.animation = 'none';
+            }
+            
+            const footerRateButton = document.getElementById('footerRateUsBtn');
+            if (footerRateButton) {
+                footerRateButton.innerHTML = '<i class="fas fa-check"></i> Already Rated';
+                footerRateButton.style.opacity = '0.8';
+            }
+        }
+        
+        // Open rating modal
+        function openRatingModal() {
+            if (hasRated) {
+                showNotification(
+                    'Already Rated 👍',
+                    'You have already rated NakulTools. Thank you for your valuable feedback!',
+                    'success'
+                );
+                return;
+            }
+            
+            ratingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = window.innerWidth > document.documentElement.clientWidth ? '15px' : '0';
+            
+            // Reset stars
+            selectedRating = 0;
+            stars.forEach(star => {
+                star.classList.remove('selected');
+                star.style.color = '#e2e8f0';
+            });
+            submitRatingBtn.disabled = true;
+            ratingText.textContent = '';
+            ratingText.innerHTML = 'Tap a star to rate your experience';
+            ratingText.style.color = 'var(--text-light)';
+            ratingText.style.fontWeight = '400';
+            submitRatingBtn.style.background = 'linear-gradient(135deg, var(--primary-blue), var(--dark-blue))';
+        }
+        
+        // Close rating modal
+        function closeRatingModal() {
+            ratingModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.body.style.paddingRight = '0';
+            selectedRating = 0;
+            stars.forEach(star => {
+                star.classList.remove('selected');
+                star.style.color = '#e2e8f0';
+            });
+            submitRatingBtn.disabled = true;
+            ratingText.textContent = '';
+            ratingSubmitted = false;
+        }
+        
+        // Show notification
+        function showNotification(title, message, type = 'success') {
+            notificationTitle.textContent = title;
+            notificationMessage.textContent = message;
+            
+            // Set color based on type
+            if (type === 'success') {
+                notification.style.borderLeftColor = 'var(--success-green)';
+                notification.querySelector('.notification-icon i').className = 'fas fa-check-circle';
+                notification.querySelector('.notification-icon').style.color = 'var(--success-green)';
+            } else if (type === 'warning') {
+                notification.style.borderLeftColor = 'var(--warning-yellow)';
+                notification.querySelector('.notification-icon i').className = 'fas fa-exclamation-triangle';
+                notification.querySelector('.notification-icon').style.color = 'var(--warning-yellow)';
+            } else if (type === 'error') {
+                notification.style.borderLeftColor = 'var(--error-red)';
+                notification.querySelector('.notification-icon i').className = 'fas fa-times-circle';
+                notification.querySelector('.notification-icon').style.color = 'var(--error-red)';
+            }
+            
+            notification.classList.add('active');
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 5000);
+        }
+        
+        // FIXED STAR RATING LOGIC
+        stars.forEach(star => {
+            // Click/tap event
+            star.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectedRating = parseInt(star.getAttribute('data-value'));
+                ratingSubmitted = true;
+                
+                // Clear all selections first
+                stars.forEach(s => {
+                    s.classList.remove('selected');
+                    s.style.color = '#e2e8f0';
+                    s.style.transform = 'scale(1)';
+                });
+                
+                // Select stars up to and including the clicked star
+                for (let i = 0; i < selectedRating; i++) {
+                    stars[i].classList.add('selected');
+                    stars[i].style.color = 'var(--warning-yellow)';
+                    stars[i].style.transform = 'scale(1.1)';
+                }
+                
+                // Show rating text with animation
+                ratingText.innerHTML = `<strong>${selectedRating} Star${selectedRating > 1 ? 's' : ''}</strong> - ${ratingDescriptions[selectedRating]}`;
+                ratingText.style.color = getRatingColor(selectedRating);
+                ratingText.style.fontWeight = '600';
+                ratingText.style.animation = 'fadeIn 0.3s ease';
+                
+                // Add emoji based on rating
+                const emoji = selectedRating >= 4 ? '🎉' : selectedRating >= 3 ? '🙂' : '😕';
+                ratingText.innerHTML += ` ${emoji}`;
+                
+                submitRatingBtn.disabled = false;
+                submitRatingBtn.style.background = getRatingGradient(selectedRating);
+            });
+            
+            // Touch events for mobile
+            star.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                star.click();
+            });
+            
+            star.addEventListener('mouseover', () => {
+                if (ratingSubmitted) return;
+                
+                const hoverRating = parseInt(star.getAttribute('data-value'));
+                
+                // Clear all
+                stars.forEach(s => {
+                    s.classList.remove('selected');
+                    s.style.color = '#e2e8f0';
+                    s.style.transform = 'scale(1)';
+                });
+                
+                // Preview selection - highlight stars up to hovered star
+                for (let i = 0; i < hoverRating; i++) {
+                    stars[i].style.color = '#fbbf24';
+                    stars[i].style.transform = 'scale(1.05)';
+                }
+                
+                // Show preview text
+                if (selectedRating === 0) {
+                    ratingText.innerHTML = `Preview: <strong>${hoverRating} Star${hoverRating > 1 ? 's' : ''}</strong> - ${ratingDescriptions[hoverRating]}`;
+                    ratingText.style.color = getRatingColor(hoverRating);
+                    ratingText.style.opacity = '0.8';
+                }
+            });
+            
+            star.addEventListener('mouseout', () => {
+                if (ratingSubmitted) return;
+                
+                // Restore actual selection
+                if (selectedRating > 0) {
+                    stars.forEach(s => {
+                        s.classList.remove('selected');
+                        s.style.color = '#e2e8f0';
+                        s.style.transform = 'scale(1)';
+                    });
+                    
+                    for (let i = 0; i < selectedRating; i++) {
+                        stars[i].classList.add('selected');
+                        stars[i].style.color = 'var(--warning-yellow)';
+                        stars[i].style.transform = 'scale(1.1)';
+                    }
+                    
+                    ratingText.innerHTML = `<strong>${selectedRating} Star${selectedRating > 1 ? 's' : ''}</strong> - ${ratingDescriptions[selectedRating]}`;
+                    ratingText.style.color = getRatingColor(selectedRating);
+                    ratingText.style.opacity = '1';
+                } else {
+                    stars.forEach(s => {
+                        s.style.color = '#e2e8f0';
+                        s.style.transform = 'scale(1)';
+                    });
+                    
+                    ratingText.innerHTML = 'Tap a star to rate your experience';
+                    ratingText.style.color = 'var(--text-light)';
+                    ratingText.style.fontWeight = '400';
+                }
+            });
+        });
+        
+        // Get color based on rating
+        function getRatingColor(rating) {
+            switch(rating) {
+                case 1: return 'var(--error-red)';
+                case 2: return '#f59e0b';
+                case 3: return '#10b981';
+                case 4: return '#3b82f6';
+                case 5: return '#8b5cf6';
+                default: return 'var(--text-dark)';
+            }
+        }
+        
+        // Get gradient based on rating
+        function getRatingGradient(rating) {
+            switch(rating) {
+                case 1: return 'linear-gradient(135deg, #ef4444, #dc2626)';
+                case 2: return 'linear-gradient(135deg, #f59e0b, #d97706)';
+                case 3: return 'linear-gradient(135deg, #10b981, #059669)';
+                case 4: return 'linear-gradient(135deg, #3b82f6, #2563eb)';
+                case 5: return 'linear-gradient(135deg, #8b5cf6, #7c3aed)';
+                default: return 'linear-gradient(135deg, var(--primary-blue), var(--dark-blue))';
+            }
+        }
+        
+        // Submit rating
+        submitRatingBtn.addEventListener('click', () => {
+            if (selectedRating > 0 && !hasRated) {
+                // Save to localStorage
+                localStorage.setItem('nakultools_rated', 'true');
+                localStorage.setItem('nakultools_rating', selectedRating.toString());
+                localStorage.setItem('nakultools_rating_date', new Date().toISOString());
+                
+                hasRated = true;
+                ratingSubmitted = true;
+                
+                // Update button
+                updateRatingButton();
+                
+                // Show appropriate success message
+                let message, title, type = 'success';
+                switch(selectedRating) {
+                    case 5:
+                        title = 'Thank You! ⭐⭐⭐⭐⭐';
+                        message = 'Wow! Thanks for the perfect rating! We\'re thrilled you love NakulTools!';
+                        break;
+                    case 4:
+                        title = 'Thanks for the Great Rating! ⭐⭐⭐⭐';
+                        message = 'Thank you for the 4-star rating! We\'ll keep improving to earn that 5th star!';
+                        break;
+                    case 3:
+                        title = 'Thanks for Your Feedback! ⭐⭐⭐';
+                        message = 'Thank you for the 3-star rating. Your feedback helps us improve!';
+                        type = 'warning';
+                        break;
+                    case 2:
+                        title = 'Thanks for Your Honest Feedback ⭐⭐';
+                        message = 'We appreciate your 2-star rating and will work hard to improve your experience.';
+                        type = 'warning';
+                        break;
+                    case 1:
+                        title = 'We Value Your Feedback ⭐';
+                        message = 'We\'re sorry to hear about your experience. We\'ll use your feedback to make improvements.';
+                        type = 'error';
+                        break;
+                }
+                
+                showNotification(title, message, type);
+                
+                // Close modal after delay
+                setTimeout(() => {
+                    closeRatingModal();
+                }, 1500);
+            }
+        });
+        
+        // Cancel rating
+        cancelRatingBtn.addEventListener('click', closeRatingModal);
+        
+        // Close rating modal when clicking outside
+        ratingModal.addEventListener('click', (e) => {
+            if (e.target === ratingModal) {
+                closeRatingModal();
+            }
+        });
+        
+        // Close rating modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && ratingModal.classList.contains('active')) {
+                closeRatingModal();
+            }
+        });
+        
+        // Event listeners for rating buttons
+        if (rateUsBtn) rateUsBtn.addEventListener('click', openRatingModal);
+        if (footerRateUsBtn) footerRateUsBtn.addEventListener('click', openRatingModal);
+        
+        // Close notification
+        notificationClose.addEventListener('click', () => {
+            notification.classList.remove('active');
+        });
+        
+        // PWA Installation
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        
+        if (installBtn) installBtn.style.display = 'none';
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn) installBtn.style.display = 'inline-flex';
+            
+            // Show notification about install availability
+            setTimeout(() => {
+                showNotification(
+                    'Install Available 📱',
+                    'Install NakulTools for quick access on your home screen!',
+                    'success'
+                );
+            }, 3000);
+        });
+        
+        // Install button click handler
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) {
+                    showNotification(
+                        'Install Info ℹ️',
+                        'Install option will appear automatically when available.',
+                        'warning'
+                    );
+                    return;
+                }
+                
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    showNotification(
+                        'App Installed! 🎉',
+                        'NakulTools has been installed successfully to your device.',
+                        'success'
+                    );
+                    installBtn.innerHTML = '<i class="fas fa-check"></i> Installed Successfully!';
+                    installBtn.disabled = true;
+                    installBtn.style.animation = 'none';
+                    setTimeout(() => {
+                        installBtn.style.display = 'none';
+                    }, 3000);
+                } else {
+                    showNotification(
+                        'Installation Cancelled',
+                        'You can install the app anytime from your browser menu.',
+                        'warning'
+                    );
+                }
+                
+                deferredPrompt = null;
+            });
+        }
+        
+        // Footer install button handler
+        if (footerInstallBtn) {
+            footerInstallBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (deferredPrompt) {
+                    installBtn.click();
+                } else {
+                    showNotification(
+                        'Install Info ℹ️',
+                        'Install option will appear automatically in supported browsers.',
+                        'warning'
+                    );
+                }
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = targetPosition - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initial check for animations
+        setTimeout(() => {
+            checkScroll();
+        }, 100);
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkScroll);
+        
+        // Stagger card animations
+        document.querySelectorAll('.tool-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.08}s`;
+        });
+        
+        // Auto-hide search results on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            if (searchResults.style.display === 'block') {
+                searchResults.style.display = 'none';
+            }
+        });
+        
+        // Fix JSON and Regex icons
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure JSON and Regex cards have proper icons
+            const jsonCard = document.querySelector('[data-tool-file="json-formatter-validator.html"]');
+            const regexCard = document.querySelector('[data-tool-file="regex-tester.html"]');
+            
+            if (jsonCard) {
+                const jsonIcon = jsonCard.querySelector('.tool-icon-container i');
+                if (jsonIcon) {
+                    jsonIcon.className = 'fas fa-brackets-curly';
+                }
+            }
+            
+            if (regexCard) {
+                const regexIcon = regexCard.querySelector('.tool-icon-container i');
+                if (regexIcon) {
+                    regexIcon.className = 'fas fa-regex';
+                }
+            }
+            
+            // Initialize with any existing rating from localStorage
+            const savedRating = localStorage.getItem('nakultools_rating');
+            if (savedRating) {
+                console.log('Previous rating:', savedRating, 'stars');
+            }
+        });
+        
+        // Prevent horizontal scroll on mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Fix iOS viewport height issue
+        function setViewportHeight() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        setViewportHeight();
+        window.addEventListener('resize', setViewportHeight);
+        window.addEventListener('orientationchange', setViewportHeight);
+        
+        // Improve mobile touch experience
+        document.addEventListener('touchstart', function() {}, {passive: true});
     </script>
 </body>
 </html>
-
-  
-  
